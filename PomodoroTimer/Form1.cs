@@ -12,33 +12,53 @@ namespace PomodoroTimer
 {
     public partial class Form1 : Form
     {
+        private DateTime mTrigger;
+        private TimeSpan mPauseToGo;
+        private bool mPaused;
 
-        DateTime endoftime = new DateTime();
-        
         public Form1()
         {
             InitializeComponent();
+            timer1.Interval = 100;
+            timer1.Tick += timer1_Tick;
         }
 
-
-        private void t_Tick(object p1, object p2)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            TimeSpan ts = endoftime.Subtract(DateTime.Now);            
-            TimerCount.Text = ts.ToString(@"mm\:ss");
+            TimeSpan sp = mTrigger - DateTime.Now;
+            if (sp.Ticks < 0)
+            {
+                sp = new TimeSpan();
+                timer1.Enabled = false;
+                startBtn.Text = "Start";
+
+            }
+            TimerCount.Text = string.Format("{0}:{1:00}", sp.Minutes, sp.Seconds);
         }
 
-        public void startBtn_Click(object sender, EventArgs e)
+        private void startBtn_Click(object sender, EventArgs e)
         {
-            startTimer();
-            
-        }
-
-        public void startTimer()
-        {
-            endoftime = DateTime.Now.AddMinutes(25);
-            Timer t = new Timer() { Interval = 1, Enabled = true };
-            t.Tick += new EventHandler(t_Tick);
-            t_Tick(null, null);
+            if (mPaused)
+            {
+                timer1.Enabled = true;
+                mPaused = false;
+                mTrigger = DateTime.Now + mPauseToGo;
+                startBtn.Text = "Pause";
+            }
+            else if (timer1.Enabled)            
+            {
+                timer1.Enabled = false;
+                startBtn.Text = "Resume";
+                mPauseToGo = mTrigger - DateTime.Now;
+                mPaused = true;
+            }
+            else
+            {
+                timer1.Enabled = true;
+                startBtn.Text = "Pause";
+                mTrigger = DateTime.Now + new TimeSpan(0, 25, 0);
+                timer1_Tick(this, EventArgs.Empty);
+            }
         }
     }
 }

@@ -33,12 +33,10 @@
             this.pauseCount = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.startBtn = new System.Windows.Forms.Button();
-            this.resetBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TimerCount
             // 
-            this.TimerCount.AutoSize = true;
             this.TimerCount.Font = new System.Drawing.Font("Century Gothic", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimerCount.ForeColor = System.Drawing.Color.White;
             this.TimerCount.Location = new System.Drawing.Point(38, 47);
@@ -46,6 +44,7 @@
             this.TimerCount.Size = new System.Drawing.Size(287, 115);
             this.TimerCount.TabIndex = 0;
             this.TimerCount.Text = "00:00";
+            this.TimerCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pauseCount
             // 
@@ -76,30 +75,12 @@
             this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
-            // resetBtn
-            // 
-            this.resetBtn.AutoSize = true;
-            this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
-            this.resetBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.resetBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.resetBtn.FlatAppearance.BorderSize = 0;
-            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetBtn.ForeColor = System.Drawing.Color.Coral;
-            this.resetBtn.Location = new System.Drawing.Point(187, 254);
-            this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Size = new System.Drawing.Size(104, 36);
-            this.resetBtn.TabIndex = 3;
-            this.resetBtn.Text = "Reset";
-            this.resetBtn.UseVisualStyleBackColor = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.ClientSize = new System.Drawing.Size(360, 450);
-            this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.pauseCount);
             this.Controls.Add(this.TimerCount);
@@ -116,7 +97,6 @@
         private System.Windows.Forms.Label pauseCount;
         public System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button startBtn;
-        private System.Windows.Forms.Button resetBtn;
     }
 }
 
