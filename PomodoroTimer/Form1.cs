@@ -60,5 +60,10 @@ namespace PomodoroTimer
                 timer1_Tick(this, EventArgs.Empty);
             }
         }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
